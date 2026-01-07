@@ -4,10 +4,9 @@ const { getUsers, getUserById, deleteUser, uploadProfileImage } = require("../co
 const upload = require("../middlewares/uploadsMiddleware");
 const router = express.Router();
 
-// User Management Routes
-router.get("/", protect, adminOnly, getUsers); // Get all users (Admin only)
-router.get("/:id", protect, getUserById); // Get user by ID
-router.delete("/:id", protect, adminOnly, deleteUser); // Delete user (Admin only)
-router.post("/:id/upload-avatar", protect, upload.single("profileImage"), uploadProfileImage); // Upload profile image
+router.get("/", protect, adminOnly, getUsers);
+router.get("/:id", protect, getUserById);
+router.delete("/:id", protect, adminOnly, deleteUser);
+router.post("/:id/upload-avatar", protect, upload.single("profileImage"), uploadProfileImage);
 
 module.exports = router;

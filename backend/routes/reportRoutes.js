@@ -10,11 +10,10 @@ const {
 
 const router = express.Router();
 
-// Report Routes
-router.get("/stats", protect, adminOnly, getTaskStats); // Get task statistics
-router.get("/user-stats/:userId", protect, getUserTaskStats); // Get user task statistics
-router.get("/overdue", protect, getOverdueTasks); // Get overdue tasks
-router.get("/by-priority", protect, getTasksByPriority); // Get tasks by priority
-router.get("/by-status", protect, getTasksByStatus); // Get tasks by status
+router.get("/stats", protect, adminOnly, getTaskStats);
+router.get("/user-stats/:userId", protect, getUserTaskStats);
+router.get("/overdue", protect, getOverdueTasks);
+router.get("/by-priority", protect, getTasksByPriority);
+router.get("/by-status", protect, getTasksByStatus);
 
 module.exports = router;

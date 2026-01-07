@@ -1,9 +1,6 @@
 const Task = require("../models/Task");
 const User = require("../models/User");
 
-// @desc   Create a new task
-// @route  POST /api/tasks
-// @access Private
 const createTask = async (req, res) => {
   try {
     const { title, description, priority, dueDate, assignedTo, attachments } = req.body;
@@ -29,15 +26,10 @@ const createTask = async (req, res) => {
   }
 };
 
-// @desc   Get all tasks (with optional status filter)
-// @route  GET /api/tasks
-// @route  GET /api/tasks?status=pending
-// @access Private
 const getTasks = async (req, res) => {
   try {
     const { status } = req.query;
     
-    // Build query filter
     const query = status ? { status } : {};
     
     const tasks = await Task.find(query)
@@ -53,9 +45,6 @@ const getTasks = async (req, res) => {
   }
 };
 
-// @desc   Get task by ID
-// @route  GET /api/tasks/:id
-// @access Private
 const getTaskById = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id).populate(
@@ -76,9 +65,6 @@ const getTaskById = async (req, res) => {
   }
 };
 
-// @desc   Update a task
-// @route  PUT /api/tasks/:id
-// @access Private
 const updateTask = async (req, res) => {
   try {
     let task = await Task.findById(req.params.id);
@@ -109,9 +95,6 @@ const updateTask = async (req, res) => {
   }
 };
 
-// @desc   Delete a task
-// @route  DELETE /api/tasks/:id
-// @access Private
 const deleteTask = async (req, res) => {
   try {
     const task = await Task.findByIdAndDelete(req.params.id);
@@ -129,9 +112,6 @@ const deleteTask = async (req, res) => {
   }
 };
 
-// @desc   Get user's tasks
-// @route  GET /api/tasks/user/:userId
-// @access Private
 const getUserTasks = async (req, res) => {
   try {
     const tasks = await Task.find({ assignedTo: req.params.userId }).populate(
@@ -146,9 +126,7 @@ const getUserTasks = async (req, res) => {
       error: error.message,
     });
   }
-};
-
-// @desc   Add todo to task
+};// @desc   Add todo to task
 // @route  POST /api/tasks/:id/todos
 // @access Private
 const addTodo = async (req, res) => {

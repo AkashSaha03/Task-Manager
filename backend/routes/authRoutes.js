@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-// Controllers
 const {
   registerUser,
   loginUser,
@@ -9,15 +8,13 @@ const {
   updateUserProfile,
 } = require("../controllers/authController");
 
-// Middleware
 const { protect } = require("../middlewares/authMiddleware");
 const upload = require("../middlewares/uploadsMiddleware");
 
-// Auth Routes
-router.post("/register", registerUser);          // Register user
-router.post("/login", loginUser);                // Login user
-router.get("/profile", protect, getUserProfile); // Get user profile
-router.put("/profile", protect, updateUserProfile); // Update profile
+router.post("/register", registerUser);
+router.post("/login", loginUser);
+router.get("/profile", protect, getUserProfile);
+router.put("/profile", protect, updateUserProfile);
 
 router.post("/upload-image", upload.single("image"), (req, res) => {
   if (!req.file) {

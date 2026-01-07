@@ -11,11 +11,6 @@ const reportRoutes = require("./routes/reportRoutes");
 
 const app = express();
 
-/* =======================
-   Middleware
-======================= */
-
-// CORS configuration
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "*",
@@ -24,22 +19,17 @@ app.use(
   })
 );
 
-// Connect Database
 connectDB();
 
-// Parse JSON bodies
 app.use(express.json());
 
-// Serve static files for uploads
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/reports", reportRoutes);
 
-// Start Server
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {

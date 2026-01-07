@@ -13,16 +13,14 @@ const {
 
 const router = express.Router();
 
-// Task Management Routes
-router.post("/", protect, createTask); // Create task
-router.get("/", protect, getTasks); // Get all tasks
-router.get("/user/:userId", protect, getUserTasks); // Get user's tasks
-router.get("/:id", protect, getTaskById); // Get task by ID
-router.put("/:id", protect, updateTask); // Update task
-router.delete("/:id", protect, deleteTask); // Delete task
+router.post("/", protect, createTask);
+router.get("/", protect, getTasks);
+router.get("/user/:userId", protect, getUserTasks);
+router.get("/:id", protect, getTaskById);
+router.put("/:id", protect, updateTask);
+router.delete("/:id", protect, deleteTask);
 
-// Todo Management Routes
-router.post("/:id/todos", protect, addTodo); // Add todo to task
-router.put("/:id/todos/:todoId", protect, updateTodo); // Update todo
+router.post("/:id/todos", protect, addTodo);
+router.put("/:id/todos/:todoId", protect, updateTodo);
 
 module.exports = router;
