@@ -1,0 +1,48 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Documentation files (DO NOT DEPLOY)
+*.md
+!node_modules/**/*.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies lock files (optional - include these for reproducible builds)
+# package-lock.json
+# yarn.lock
+
+# Uploads directory (optional - exclude large user uploads)
+backend/uploads/*
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+
+# Temporary files
+tmp/
+temp/
